@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">SmartCity</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Errors -->
+    <string name="ERROR_nameField">Enter a valid name...</string>
+    <string name="ERROR_addressField">Enter a valid address...</string>
+    <string name="ERROR_emailField">Enter a valid email address...</string>
+    <string name="ERROR_phoneNumberField">Enter a valid phone number...</string>
+    <string name="ERROR_passwordField">Enter a valid password (between 4 and 10 alphanumeric characters)...</string>
+    <string name="ERROR_passwordsNotMatching">Passwords do not match</string>
+
+    <!-- Login|SignUp Common Texts -->
+    <string name="signUp_login_mail">Email</string>
+    <string name="signUp_login_password">Password</string>
+    <string name="loginFailed">Login failed</string>
+
+
+    <!-- Login Texts -->
+    <string name="login_button">Login</string>
+    <string name="login_signUpText">No account yet? Create one</string>
+    <string name="login_authenticating">Authenticating...</string>
+
+    <!-- SignUp Field Texts -->
+    <string name="signUp_name">Name</string>
+    <string name="signUp_address">Address</string>
+    <string name="signUp_phoneNumber">Mobile Number</string>
+    <string name="signUp_repeat_password">Re-enter Password</string>
+    <string name="signUp_buttonText">Create Account</string>
+    <string name="signUp_loginInsteadOption">Already a member? Login</string>
+    <string name="signUp_creatingAccount">"Creating Account..."</string>
+
+
+    <!-- Testing -->
+    <string name="hello_world">Hello World</string>
+</resources>

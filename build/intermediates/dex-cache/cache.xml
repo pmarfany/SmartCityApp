@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="183440bcdb9392af712ca15d654afcf8cba0b940">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c2daad230470e45c506115b3d8474856c15be9dc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6e7a186a80ca3b77fa35bea867de898ff9b92f9a/classes.dex" />
+    </item>
+
+</items>
