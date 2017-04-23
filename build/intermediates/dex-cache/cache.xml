@@ -38,15 +38,6 @@
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/release/classes_bc89f6404c1ec6c94415578b3db79264303527c6.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6e7a186a80ca3b77fa35bea867de898ff9b92f9a/classes.dex" />
-    </item>
-    <item
         is-multidex="false"
         jar="/Users/PauMarfany/.android/build-cache/f4351d56d49474180048824e3c8a2b2127935e16/output/jars/classes.jar"
         jumboMode="false"
@@ -92,13 +83,13 @@
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/release/classes_5fb48f92ec965c4efdb2089a1c7bae1d8e0cef2f.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/PauMarfany/.android/build-cache/dab5dd6602ce3670395eb1c0c800a59c37de0607/output/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="cb06601b49ed90e793c1e3757f60f3f8bb287a96">
-        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c2daad230470e45c506115b3d8474856c15be9dc/classes.dex" />
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/debug/classes_b021ad60f331861e6b33c3b020b3d3dd848f66a1.jar" />
     </item>
     <item
         is-multidex="false"
@@ -144,6 +135,15 @@
         revision="25.0.2"
         sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/release/classes_b38116e4f15ac7ee21c88a25d1d9be3eb5db031c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/PauMarfany/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/debug/constraint-layout-solver-1.0.2_cc539397379f8de3d38648f3bff5f8e33d75974d.jar" />
     </item>
 
 </items>

@@ -9,6 +9,7 @@
     <color name="primary_darker">#004c8b</color>
     <color name="accent">#FFFFFF</color>
 
+    <!-- Grey gradiants -->
     <color name="black">#000000</color>
     <color name="jet">#222222</color>
     <color name="oil">#333333</color>
@@ -19,6 +20,12 @@
     <color name="iron">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
 
+    <!-- Transparent -->
     <color name="transparent">#00000000</color>
+
+    <!-- Emergency colors -->
+    <color name="primary_red">#E43F3F</color>
+    <color name="primary_dark_red">#E12929</color>
+    <color name="primary_darker_red">#CC1D1D</color>
 
 </resources>

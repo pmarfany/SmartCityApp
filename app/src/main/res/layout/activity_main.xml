@@ -1,13 +1,57 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    android:paddingTop="24dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Text -->
     <TextView
-        android:text="@string/hello_world"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
 
-</RelativeLayout>
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+
+        android:gravity="center_horizontal"
+        android:text="Press button in case of emergency"
+        android:textSize="30sp"
+        android:textColor="@color/white" />
+
+    <!-- Login Button -->
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/btn_sos"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+
+        android:src="@drawable/ic_warning"
+        android:layout_gravity="center_horizontal" />
+
+    <!-- IP Label -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" >
+
+        <EditText android:id="@+id/IP_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:digits="0123456789."
+            android:hint="Server IP Address" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+</LinearLayout>
