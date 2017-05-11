@@ -38,6 +38,15 @@
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/release/classes_bc89f6404c1ec6c94415578b3db79264303527c6.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_6e7a186a80ca3b77fa35bea867de898ff9b92f9a/classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="/Users/PauMarfany/.android/build-cache/f4351d56d49474180048824e3c8a2b2127935e16/output/jars/classes.jar"
         jumboMode="false"
@@ -90,6 +99,15 @@
         revision="25.0.2"
         sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/debug/classes_b021ad60f331861e6b33c3b020b3d3dd848f66a1.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0078bbc02bc5e90743a8e600173927c7bb72f1d5">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c2daad230470e45c506115b3d8474856c15be9dc/classes.dex" />
     </item>
     <item
         is-multidex="false"

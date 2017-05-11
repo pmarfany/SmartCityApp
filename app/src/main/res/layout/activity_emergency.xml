@@ -37,10 +37,11 @@
 
     <!-- Text -->
     <TextView
+        android:id="@+id/emergency_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="The ambulance is comming to your location"
+        android:text="@null"
         android:gravity="center"
         android:textSize="26dip" />
 

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">SmartCity</string>
-    <string name="action_settings">Settings</string>
 
     <!-- Errors -->
     <string name="ERROR_nameField">Enter a valid name...</string>
@@ -14,7 +13,6 @@
     <string name="signUp_login_mail">Email</string>
     <string name="signUp_login_password">Password</string>
     <string name="loginFailed">Login failed</string>
-
 
     <!-- Login Texts -->
     <string name="login_button">Login</string>
@@ -30,7 +28,12 @@
     <string name="signUp_loginInsteadOption">Already a member? Login</string>
     <string name="signUp_creatingAccount">"Creating Account..."</string>
 
+    <!-- Emergency text -->
+    <string name="ambulance_message">The ambulance is comming to your location</string>
+    <string name="police_message">The police is comming to your location</string>
+    <string name="firefighter_message">The firefighters are comming to your location</string>
 
-    <!-- Testing -->
-    <string name="hello_world">Hello World</string>
+    <!-- Others -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

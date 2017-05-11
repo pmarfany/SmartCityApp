@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Services">
+        <menu>
+            <group android:checkableBehavior="single" >
+                <item
+                    android:id="@+id/nav_ambulance"
+                    android:icon="@drawable/menu_ambulance"
+                    android:title="Ambulance" />
+                <item
+                    android:id="@+id/nav_firefighter"
+                    android:icon="@drawable/menu_firefighter"
+                    android:title="Firefighter" />
+                <item
+                    android:id="@+id/nav_police"
+                    android:icon="@drawable/menu_police"
+                    android:title="Police" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Configuration">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/menu_settings"
+                android:title="Configuration" />
+        </menu>
+    </item>
+
+</menu>
