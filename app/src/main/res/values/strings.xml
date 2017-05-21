@@ -1,13 +1,23 @@
 <resources>
     <string name="app_name">SmartCity</string>
+    <string name="config_title">Configuration</string>
+    <string name="action_done">Done</string>
 
-    <!-- Errors -->
-    <string name="ERROR_nameField">Enter a valid name...</string>
-    <string name="ERROR_addressField">Enter a valid address...</string>
-    <string name="ERROR_emailField">Enter a valid email address...</string>
-    <string name="ERROR_phoneNumberField">Enter a valid phone number...</string>
-    <string name="ERROR_passwordField">Enter a valid password (between 4 and 10 alphanumeric characters)...</string>
-    <string name="ERROR_passwordsNotMatching">Passwords do not match</string>
+    <!-- Data fields -->
+    <string name="config">Personal Data</string>
+    <string name="config_Name">Name</string>
+    <string name="config_Surname">Surname</string>
+    <string name="config_gender">Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="config_Birthday">Birthday</string>
+    <string name="config_phoneNumber">Phone Number</string>
+    <string name="config_comments">Comments (optional)</string>
+
+    <!-- Settings fields -->
+    <string name="settings">Settings</string>
+    <string name="settings_ipAddress">IP Address</string>
+    <string name="settings_port">Port Number</string>
 
     <!-- Login|SignUp Common Texts -->
     <string name="signUp_login_mail">Email</string>
@@ -32,6 +42,21 @@
     <string name="ambulance_message">The ambulance is comming to your location</string>
     <string name="police_message">The police is comming to your location</string>
     <string name="firefighter_message">The firefighters are comming to your location</string>
+
+    <!-- ERROR Messages -->
+    <string name="ERROR_nameField">Enter a valid name...</string>
+    <string name="ERROR_surnameField">Enter a valid surname...</string>
+    <string name="ERROR_genderButton">Select a gender</string>
+    <string name="ERROR_birthdayButton">Choose your birthday</string>
+    <string name="ERROR_phoneNumberField">Enter a valid phone number...</string>
+    <string name="ERROR_ipAddressField">Enter a valid ip address...</string>
+    <string name="ERROR_portField">Enter a valid port...</string>
+    <string name="ERROR_addressField">Enter a valid address...</string>
+    <string name="ERROR_emailField">Enter a valid email address...</string>
+    <string name="ERROR_passwordField">Enter a valid password (between 4 and 10 alphanumeric characters)...</string>
+    <string name="ERROR_passwordsNotMatching">Passwords do not match</string>
+
+    <string name="ERROR_sending_message">Error while sending message</string>
 
     <!-- Others -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
