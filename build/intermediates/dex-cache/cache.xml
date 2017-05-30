@@ -2,6 +2,15 @@
 <items version="2" >
 
     <item
+        is-multidex="true"
+        jar="/Users/PauMarfany/.gradle/caches/modules-2/files-2.1/org.eclipse.paho/org.eclipse.paho.client.mqttv3/1.0.2/11752d3f24d1a9deda4533a7ca18d8496417ceeb/org.eclipse.paho.client.mqttv3-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="11752d3f24d1a9deda4533a7ca18d8496417ceeb">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/org.eclipse.paho.client.mqttv3-1.0.2_d6ab5988635d8675c3872379d1dd286d24b5d286/classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="/Users/PauMarfany/.android/build-cache/70f16e34d5e53069b0c9d5ed53f66a03ec195078/output/jars/classes.jar"
         jumboMode="false"
@@ -27,6 +36,15 @@
         revision="25.0.2"
         sha1="95519720620b553f63afc789beba9ad582807f7c">
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/release/classes_3086e2c3ea760d4e3cbcd89902261f77c2ce040e.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/PauMarfany/.gradle/caches/modules-2/files-2.1/com.google.android/support-v4/r7/24d0f6da34c3a2bfcf736ab42d51c91ac821ee22/support-v4-r7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="24d0f6da34c3a2bfcf736ab42d51c91ac821ee22">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-v4-r7_cae7963496c5cfd948a9af7602dacb001a995b72/classes.dex" />
     </item>
     <item
         is-multidex="false"
@@ -102,11 +120,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/PauMarfany/.gradle/caches/modules-2/files-2.1/org.eclipse.paho/org.eclipse.paho.android.service/1.0.2/2d956522c556caeb35148445ecd059ebe67331f6/org.eclipse.paho.android.service-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2d956522c556caeb35148445ecd059ebe67331f6">
+        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/org.eclipse.paho.android.service-1.0.2_0d51e9d3197955f09b90d622141323cc721ddbdb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="d957612ecb3fc43e830a89a484d8730d00b5bb34">
+        sha1="6cff2e3b77f57fc227f7d2a60a6efed535a9ec16">
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c2daad230470e45c506115b3d8474856c15be9dc/classes.dex" />
     </item>
     <item

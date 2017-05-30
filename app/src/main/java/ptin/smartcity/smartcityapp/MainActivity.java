@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -112,14 +113,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
         // Desactivem el botó
         _SOSButton.setEnabled(false);
 
         // Iniciem la comunicació
-        EmergencySocket communicacio;
+        //EmergencySocket communicacio;
+        final MQTTCommunication communication;
         try {
-            communicacio = new EmergencySocket();
+            //communicacio = new EmergencySocket();
+            communication = new MQTTCommunication(this);
         } catch (IOException e) {
             // Mostrem alerta d'error
             sendErrorAlert(v);
@@ -135,37 +138,29 @@ public class MainActivity extends AppCompatActivity
         progressDialog.setMessage("Sending message");
         progressDialog.show();
 
-        if ( communicacio.sendMessage() ) {
-
-            // Tanquem la comunicació
-            communicacio.close();
-
-            // Després de 2 segons, mostrem el missatge d'enviat!
-            new android.os.Handler().postDelayed(
-                new Runnable() {
+        // Després de 3 segons, mostrem el missatge d'enviat!
+        new android.os.Handler().postDelayed(
+            new Runnable() {
                     public void run() {
-                        // Tanquem el diàleg
-                        progressDialog.dismiss();
+                // Tanquem el diàleg
+                progressDialog.dismiss();
 
-                        // Activem el botó
-                        _SOSButton.setEnabled(true);
+                if ( communication.isMessageSended() ) {
+                    // Activem el botó
+                    _SOSButton.setEnabled(true);
 
-                        // Iniciem la pantalla d'emergències
-                        emergency.putExtra("EMERGENCY_OPTION", EMERGENCY_OPTION);
-                        startActivity(emergency);
-                    }
-                }, 3000);
-        }
-        else {
-            // Mostrem alerta d'error
-            sendErrorAlert(v);
+                    // Iniciem la pantalla d'emergències
+                    emergency.putExtra("EMERGENCY_OPTION", EMERGENCY_OPTION);
+                    startActivity(emergency);
+                }
+                else {
+                    // Mostrem alerta d'error
+                    sendErrorAlert(v);
 
-            // Tanquem la comunicació
-            communicacio.close();
-
-            // Activem el botó
-            _SOSButton.setEnabled(true);
-        }
+                    // Activem el botó
+                    _SOSButton.setEnabled(true);
+                }
+            }}, 3000);
     }
 
     private void sendErrorAlert(View v) {
