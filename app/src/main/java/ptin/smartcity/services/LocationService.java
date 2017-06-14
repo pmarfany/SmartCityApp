@@ -1,4 +1,4 @@
-package ptin.smartcity.smartcityapp;
+package ptin.smartcity.services;
 
 import android.Manifest;
 import android.content.Context;

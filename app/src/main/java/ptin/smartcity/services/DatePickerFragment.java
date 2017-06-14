@@ -1,4 +1,4 @@
-package ptin.smartcity.smartcityapp;
+package ptin.smartcity.services;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 
 import java.util.Calendar;
+
+import ptin.smartcity.smartcityapp.R;
 
 /**
  * Created by PauMarfany on 17/5/17.

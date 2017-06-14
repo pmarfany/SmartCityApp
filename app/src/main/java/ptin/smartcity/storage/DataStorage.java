@@ -1,4 +1,4 @@
-package ptin.smartcity.smartcityapp;
+package ptin.smartcity.storage;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +22,32 @@ public class DataStorage {
 
         // Commit the edits!
         editor.commit();
+    }
+
+    public static void deleteString(String key) {
+        if ( has(key) ) {
+            // We create an editor
+            SharedPreferences.Editor editor = settings.edit();
+
+            // We edit the value
+            editor.remove(key);
+
+            // Commit the edits!
+            editor.commit();
+        }
+    }
+
+    // Delete all data (except IP and Port)
+    public static void clearAll() {
+        deleteString("Name");
+        deleteString("Surname");
+        deleteString("Gender");
+        deleteString("Birthday");
+        deleteString("PhoneNumber");
+        deleteString("Comments");
+
+        deleteString("account_email");
+        deleteString("account_password");
     }
 
     public static String getData(String key) {

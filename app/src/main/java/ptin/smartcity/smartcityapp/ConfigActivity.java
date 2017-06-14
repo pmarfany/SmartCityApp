@@ -5,7 +5,6 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Patterns;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
+
+import ptin.smartcity.storage.DataChecker;
+import ptin.smartcity.storage.DataStorage;
+import ptin.smartcity.services.DatePickerFragment;
 
 public class ConfigActivity extends AppCompatActivity {
 
@@ -55,6 +58,7 @@ public class ConfigActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    // Iniciem les variables "d'Android"
     private void initVariables() {
         // Camps de dades personals
         nameField = (EditText) findViewById(R.id.config_Name);
@@ -92,6 +96,10 @@ public class ConfigActivity extends AppCompatActivity {
         portField.setText( DataStorage.getData("port") );
     }
 
+    /**
+     * Funcionalitat de la Pantalla
+     */
+
     // Mostra el diàleg de selecció de data
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
@@ -111,10 +119,8 @@ public class ConfigActivity extends AppCompatActivity {
         // Registering popup with OnMenuItemClickListener
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
-
                 genderButton.setText( item.getTitle() );
                 genderButton.setTextColor( ContextCompat.getColor(ConfigActivity.this, R.color.black) );
-
                 return true;
             }
         });
@@ -122,6 +128,10 @@ public class ConfigActivity extends AppCompatActivity {
         popup.show(); //showing popup menu
 
     }
+
+    /**
+     * Menús
+     */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -137,29 +147,28 @@ public class ConfigActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_done) {
-            // Comprovem que els camps estigui correctament omplerts
+        switch (id) {
+            case R.id.action_done:
+                // Comprovem que els camps estigui correctament omplerts
+                if ( checkFields() ) {
+                    // Guardar dades
+                    DataStorage.putString("Name", nameField.getText().toString());
+                    DataStorage.putString("Surname", surnameField.getText().toString());
+                    DataStorage.putString("Gender", genderButton.getText().toString());
+                    DataStorage.putString("Birthday", birthdayButton.getText().toString());
+                    DataStorage.putString("PhoneNumber", phoneNumberField.getText().toString());
+                    DataStorage.putString("Comments", commentsField.getText().toString());
+                    DataStorage.putString("ipAddress", ipAddressField.getText().toString());
+                    DataStorage.putString("port", portField.getText().toString());
 
-            if ( checkFields() ) {
-                // Guardar dades
-                DataStorage.putString("Name", nameField.getText().toString());
-                DataStorage.putString("Surname", surnameField.getText().toString());
-                DataStorage.putString("Gender", genderButton.getText().toString());
-                DataStorage.putString("Birthday", birthdayButton.getText().toString());
-                DataStorage.putString("PhoneNumber", phoneNumberField.getText().toString());
-                DataStorage.putString("Comments", commentsField.getText().toString());
-                DataStorage.putString("ipAddress", ipAddressField.getText().toString());
-                DataStorage.putString("port", portField.getText().toString());
+                    // Tanquem l'activitat
+                    this.finish();
+                }
+                return true;
 
-                // Tanquem l'activitat
-                this.finish();
-            }
-
-            return true;
-        }
-        else if (id == android.R.id.home) {
-            this.onBackPressed();
-            return true;
+            case android.R.id.home:
+                this.onBackPressed();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -168,57 +177,17 @@ public class ConfigActivity extends AppCompatActivity {
     private boolean checkFields() {
         boolean valid = true;
 
-        // Obtenir valors
-        String name = nameField.getText().toString();
-        String surname = surnameField.getText().toString();
-        String gender = genderButton.getText().toString();
-        String birthday = birthdayButton.getText().toString();
-        String phoneNumber = phoneNumberField.getText().toString();
+        DataChecker dataChecker = new DataChecker(this);
 
-        String ipAddress = ipAddressField.getText().toString();
-        String port = portField.getText().toString();
+        // We check all the fields and we keep a reminder
+        valid = valid && dataChecker.checkField(nameField, DataChecker.TYPE_TEXT);
+        valid = valid && dataChecker.checkField(surnameField, DataChecker.TYPE_TEXT);
+        valid = valid && dataChecker.checkField(genderButton, DataChecker.TYPE_GENDER);
+        valid = valid && dataChecker.checkField(birthdayButton, DataChecker.TYPE_DATE);
+        valid = valid && dataChecker.checkField(phoneNumberField, DataChecker.TYPE_PHONE);
 
-        // NAME: Comprovar que el camp no estigui buit.
-        if ( name.isEmpty() ) {
-            nameField.setError( getString(R.string.ERROR_nameField) );
-            valid = false;
-        } else nameField.setError(null);
-
-        // SURNAME: Comprovar que el camp no estigui buit.
-        if ( surname.isEmpty() ) {
-            surnameField.setError( getString(R.string.ERROR_surnameField) );
-            valid = false;
-        } else surnameField.setError(null);
-
-        // GENDER: Comprovar que el camp no estigui buit.
-        if ( gender.compareTo( getString(R.string.config_gender) ) == 0 ) {
-            genderButton.setError( getString(R.string.ERROR_genderButton) );
-            valid = false;
-        } else genderButton.setError(null);
-
-        // BIRTHDAY: Comprovar que el camp no estigui buit.
-        if ( birthday.compareTo( getString(R.string.config_Birthday) ) == 0 ) {
-            birthdayButton.setError( getString(R.string.ERROR_birthdayButton) );
-            valid = false;
-        } else birthdayButton.setError(null);
-
-        // MOBILE: Comprovar que el camp no estigui buit i que sigui un mòbil
-        if ( phoneNumber.isEmpty() || !Patterns.PHONE.matcher(phoneNumber).matches() ) {
-            phoneNumberField.setError( getString(R.string.ERROR_phoneNumberField) );
-            valid = false;
-        } else phoneNumberField.setError(null);
-
-        // ADREÇA IP: Comprovar que el camp no estigui buit i que sigui una adreça
-        if ( ipAddress.isEmpty() || !Patterns.IP_ADDRESS.matcher(ipAddress).matches() ) {
-            ipAddressField.setError( getString(R.string.ERROR_ipAddressField) );
-            valid = false;
-        } else ipAddressField.setError(null);
-
-        // PORT: Comprovar que el camp no estigui buit.
-        if ( port.isEmpty() ) {
-            portField.setError( getString(R.string.ERROR_portField) );
-            valid = false;
-        } else portField.setError(null);
+        valid = valid && dataChecker.checkField(ipAddressField, DataChecker.TYPE_IPADDRESS);
+        valid = valid && dataChecker.checkField(portField, DataChecker.TYPE_TEXT);
 
         return valid;
     }

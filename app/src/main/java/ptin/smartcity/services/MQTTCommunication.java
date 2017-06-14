@@ -1,4 +1,4 @@
-package ptin.smartcity.smartcityapp;
+package ptin.smartcity.services;
 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +15,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+
+import ptin.smartcity.smartcityapp.MainActivity;
+import ptin.smartcity.storage.DataStorage;
 
 /**
  * Created by PauMarfany on 30/5/17.
@@ -88,9 +91,7 @@ public class MQTTCommunication {
         // Ens connectem al tòpic
         try {
             mqttAndroidClient.subscribe(this.MQTT_TOPIC, 0);
-
             Log.i("MQTT", "Subscribed to topic: " + this.MQTT_TOPIC);
-
         } catch ( MqttException e ) { throw new IOException("Cannot subscribe to MQTT topic!"); }
     }
 

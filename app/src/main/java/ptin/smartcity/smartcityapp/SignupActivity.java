@@ -1,163 +1,97 @@
 package ptin.smartcity.smartcityapp;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Patterns;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import butterknife.ButterKnife;
-import butterknife.Bind;
+import ptin.smartcity.loginService.SignUpAsync;
+import ptin.smartcity.storage.DataChecker;
+import ptin.smartcity.storage.DataStorage;
 
-public class SignupActivity extends AppCompatActivity {
-
-    private static final String TAG = "SignupActivity";
+public class SignupActivity extends LoginMasterActivity {
 
     // Obtenim els camps de la pantalla
-    @Bind(R.id.input_name) EditText _nameText;
-    @Bind(R.id.input_address) EditText _addressText;
-    @Bind(R.id.input_email) EditText _emailText;
-    @Bind(R.id.input_mobile) EditText _mobileText;
-    @Bind(R.id.input_password) EditText _passwordText;
-    @Bind(R.id.input_reEnterPassword) EditText _reEnterPasswordText;
-    @Bind(R.id.btn_signup) Button _signupButton;
-    @Bind(R.id.link_login) TextView _loginLink;
+    private EditText _nameField;
+    private EditText _surnameField;
+    private EditText _reEnterPasswordField;
 
     // Ejecutar el crear la pantalla
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        // We set the layout that we are using
         setContentView(R.layout.activity_signup);
-        ButterKnife.bind(this);
 
-        // SignUp Button: Comportament
-        _signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { signup(); }
-        });
+        // Load "our" fields
+        _nameField = (EditText) findViewById(R.id.input_name);
+        _surnameField = (EditText) findViewById(R.id.input_surname);
+        _reEnterPasswordField = (EditText) findViewById(R.id.input_reEnterPassword);
 
-        // Login Button: Comportament
-        _loginLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                finish();
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
-            }
-        });
+        // We call the super class
+        super.onCreate(savedInstanceState);
+    }
+
+    protected Intent openOtherScreen() {
+        return new Intent(getApplicationContext(), LoginActivity.class);
+    }
+
+    protected void overridePendingTransition() {
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
+    }
+
+    @Override
+    public void onSuccess() {
+        // Emmagatzem les dades ja entrades
+        String name = _nameField.getText().toString();
+        String surname = _surnameField.getText().toString();
+
+        DataStorage.putString("Name", name);
+        DataStorage.putString("Surname", surname);
+
+        super.onSuccess();
     }
 
     // Funció per a registrar-se
-    public void signup() {
+    public void acceptButtonAction() {
         // Comprovar que els camps siguin correctes
         if ( !validate() ) {
-            onSignupFailed();
+            onFailed();
             return;
         }
 
         // Desactivem el botó de SignUp
-        _signupButton.setEnabled(false);
-
-        // Obrim una pantalla de creació de compte
-        final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this, R.style.LoginTheme_Dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage( getString(R.string.signUp_creatingAccount) );
-        progressDialog.show();
+        acceptButton.setEnabled(false);
 
         // Obtenim els valors
-        String name = _nameText.getText().toString();
-        String address = _addressText.getText().toString();
-        String email = _emailText.getText().toString();
-        String mobile = _mobileText.getText().toString();
-        String password = _passwordText.getText().toString();
-        String reEnterPassword = _reEnterPasswordText.getText().toString();
+        String name = _nameField.getText().toString();
+        String surname = _surnameField.getText().toString();
+        String email = _emailField.getText().toString();
+        String password = _passwordField.getText().toString();
 
-        // TODO: Implement your own signup logic here.
-
-        // TEMPORAL: després de 3 segons, autenticar correcte!
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onSignupSuccess or onSignupFailed
-                        // depending on success
-                        onSignupSuccess();
-                        // onSignupFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
-    }
-
-    // Disable going back to the MainActivity
-    @Override
-    public void onBackPressed() {}
-
-    // Registre correcte
-    public void onSignupSuccess() {
-        _signupButton.setEnabled(true);
-        setResult(RESULT_OK, null);
-        finish();
-    }
-
-    // Error de registre
-    public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), getString(R.string.loginFailed), Toast.LENGTH_LONG).show();
-        _signupButton.setEnabled(true);
+        // Creem una tasca en un altre procés per al login
+        SignUpAsync signUpAsync = new SignUpAsync(this);
+        signUpAsync.execute(name, surname, email, password);
     }
 
     // Funció de validació dels camps
     public boolean validate() {
         boolean valid = true;
 
-        // Obtenir valors
-        String name = _nameText.getText().toString();
-        String address = _addressText.getText().toString();
-        String email = _emailText.getText().toString();
-        String mobile = _mobileText.getText().toString();
-        String password = _passwordText.getText().toString();
-        String reEnterPassword = _reEnterPasswordText.getText().toString();
+        DataChecker dataChecker = new DataChecker(this);
 
-        // NAME: Comprovar que el camp no estigui buit.
-        if (name.isEmpty()) {
-            _nameText.setError( getString(R.string.ERROR_nameField) );
-            valid = false;
-        } else _nameText.setError(null);
+        valid = valid && dataChecker.checkField(_nameField, DataChecker.TYPE_TEXT);
+        valid = valid && dataChecker.checkField(_surnameField, DataChecker.TYPE_TEXT);
+        valid = valid && dataChecker.checkField(_emailField, DataChecker.TYPE_EMAIL);
+        valid = valid && dataChecker.checkField(_passwordField, DataChecker.TYPE_PASSWORD);
+        valid = valid && dataChecker.checkField(_reEnterPasswordField, DataChecker.TYPE_PASSWORD);
 
-        // ADDRESS: Comprovar que el camp no estigui buit.
-        if (address.isEmpty()) {
-            _addressText.setError( getString(R.string.ERROR_addressField) );
-            valid = false;
-        } else _addressText.setError(null);
+        // Additional check for password matching
+        String password = _passwordField.getText().toString();
+        String reEnterPassword = _reEnterPasswordField.getText().toString();
 
-        // EMAIL: Comprovar que el camp no estigui buit i que sigui un correu electrònic
-        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError( getString(R.string.ERROR_emailField) );
+        if ( valid && !reEnterPassword.equals(password) ) {
+            _reEnterPasswordField.setError( getString(R.string.ERROR_Field) );
             valid = false;
-        } else _emailText.setError(null);
-
-        // MOBILE: Comprovar que el camp no estigui buit i que sigui un mòbil
-        if (mobile.isEmpty() || !Patterns.PHONE.matcher(mobile).matches()) {
-            _mobileText.setError( getString(R.string.ERROR_phoneNumberField) );
-            valid = false;
-        } else _mobileText.setError(null);
-
-        // PASSWORD: Comprovar que el camp no estigui buit i que compleixi amb els requisits mínims de longitud
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError( getString(R.string.ERROR_passwordField) );
-            valid = false;
-        } else _passwordText.setError(null);
-
-        // REPASSWORD: Comprovar que el camp no estigui buit i que compleixi amb els requisits mínims de longitud
-        if (reEnterPassword.isEmpty() || reEnterPassword.length() < 4 || reEnterPassword.length() > 10 || !(reEnterPassword.equals(password))) {
-            _reEnterPasswordText.setError( getString(R.string.ERROR_passwordsNotMatching) );
-            valid = false;
-        } else _reEnterPasswordText.setError(null);
+        } else _reEnterPasswordField.setError(null);
 
         return valid;
     }

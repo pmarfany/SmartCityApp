@@ -5,20 +5,21 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import java.io.IOException;
+
+import ptin.smartcity.storage.DataStorage;
+import ptin.smartcity.services.LocationService;
+import ptin.smartcity.services.MQTTCommunication;
 
 
 public class MainActivity extends AppCompatActivity
@@ -38,9 +39,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* Inicialitzem la pantalla de login
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);*/
+        // Inicialitzem el sistema d'emmagatzematge
+        dataStorage = new DataStorage(this);
+
+        // Inicialitzem la pantalla de login
+        if ( !DataStorage.has("account_email") || !DataStorage.has("account_password") ) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
 
         // Configurar toolbar de l'aplicació
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,9 +74,6 @@ public class MainActivity extends AppCompatActivity
         // Inicialitzem la pantalla d'emergències
         emergency = new Intent(this, EmergencyActivity.class);
 
-        // Inicialitzem el sistema d'emmagatzematge
-        dataStorage = new DataStorage(this);
-
         // Iniciem el sistema de localització
         locationListener = new LocationService(this);
     }
@@ -84,7 +87,6 @@ public class MainActivity extends AppCompatActivity
         else super.onBackPressed();
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -105,6 +107,11 @@ public class MainActivity extends AppCompatActivity
                 Intent settings = new Intent(this, ConfigActivity.class);
                 startActivity(settings);
                 break;
+            case R.id.nav_signOut:
+                // Eliminem totes les dades i sortim
+                DataStorage.clearAll();
+                this.finish();
+            break;
         }
 
         // Tanquem el menú
@@ -118,10 +125,8 @@ public class MainActivity extends AppCompatActivity
         _SOSButton.setEnabled(false);
 
         // Iniciem la comunicació
-        //EmergencySocket communicacio;
         final MQTTCommunication communication;
         try {
-            //communicacio = new EmergencySocket();
             communication = new MQTTCommunication(this);
         } catch (IOException e) {
             // Mostrem alerta d'error
@@ -129,7 +134,6 @@ public class MainActivity extends AppCompatActivity
 
             // Activem el botó
             _SOSButton.setEnabled(true);
-
             return;
         }
 
@@ -141,7 +145,7 @@ public class MainActivity extends AppCompatActivity
         // Després de 3 segons, mostrem el missatge d'enviat!
         new android.os.Handler().postDelayed(
             new Runnable() {
-                    public void run() {
+                public void run() {
                 // Tanquem el diàleg
                 progressDialog.dismiss();
 
@@ -173,13 +177,11 @@ public class MainActivity extends AppCompatActivity
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-
                 // Si el permís s'ha concedit, PERFECTE!!
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {}
 
                 // Sinó, tanquem l'app
                 else this.finishAndRemoveTask();
-
             }
         }
     }

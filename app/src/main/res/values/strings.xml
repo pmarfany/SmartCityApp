@@ -30,9 +30,6 @@
     <string name="login_authenticating">Authenticating...</string>
 
     <!-- SignUp Field Texts -->
-    <string name="signUp_name">Name</string>
-    <string name="signUp_address">Address</string>
-    <string name="signUp_phoneNumber">Mobile Number</string>
     <string name="signUp_repeat_password">Re-enter Password</string>
     <string name="signUp_buttonText">Create Account</string>
     <string name="signUp_loginInsteadOption">Already a member? Login</string>
@@ -44,18 +41,7 @@
     <string name="firefighter_message">The firefighters are comming to your location</string>
 
     <!-- ERROR Messages -->
-    <string name="ERROR_nameField">Enter a valid name...</string>
-    <string name="ERROR_surnameField">Enter a valid surname...</string>
-    <string name="ERROR_genderButton">Select a gender</string>
-    <string name="ERROR_birthdayButton">Choose your birthday</string>
-    <string name="ERROR_phoneNumberField">Enter a valid phone number...</string>
-    <string name="ERROR_ipAddressField">Enter a valid ip address...</string>
-    <string name="ERROR_portField">Enter a valid port...</string>
-    <string name="ERROR_addressField">Enter a valid address...</string>
-    <string name="ERROR_emailField">Enter a valid email address...</string>
-    <string name="ERROR_passwordField">Enter a valid password (between 4 and 10 alphanumeric characters)...</string>
-    <string name="ERROR_passwordsNotMatching">Passwords do not match</string>
-
+    <string name="ERROR_Field">Enter a valid content...</string>
     <string name="ERROR_sending_message">Error while sending message</string>
 
     <!-- Others -->

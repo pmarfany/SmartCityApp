@@ -2,9 +2,11 @@
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loginScrollView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fitsSystemWindows="true" >
+    android:fitsSystemWindows="true"
+    android:background="@color/primary" >
 
     <LinearLayout
         android:orientation="vertical"
@@ -49,25 +51,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:hint="@string/signUp_name" />
+                android:hint="@string/config_Name" />
 
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Address Label -->
+        <!-- Surname Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp" >
 
-            <EditText android:id="@+id/input_address"
+            <EditText android:id="@+id/input_surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:hint="@string/signUp_address" />
+                android:inputType="textPersonName"
+                android:hint="@string/config_Surname" />
 
         </android.support.design.widget.TextInputLayout>
-
 
         <!--  Email Label -->
         <android.support.design.widget.TextInputLayout
@@ -84,23 +85,6 @@
 
         </android.support.design.widget.TextInputLayout>
 
-
-        <!-- Mobile number Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" >
-
-            <EditText android:id="@+id/input_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="@string/signUp_phoneNumber" />
-
-        </android.support.design.widget.TextInputLayout>
-
-
         <!-- Password Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -115,7 +99,6 @@
                 android:hint="@string/signUp_login_password" />
 
         </android.support.design.widget.TextInputLayout>
-
 
         <!-- Password Re-enter Label -->
         <android.support.design.widget.TextInputLayout
@@ -132,10 +115,9 @@
 
         </android.support.design.widget.TextInputLayout>
 
-
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_signup"
+            android:id="@+id/btn_accept"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -143,7 +125,7 @@
             android:padding="12dp"
             android:text="@string/signUp_buttonText" />
 
-        <TextView android:id="@+id/link_login"
+        <TextView android:id="@+id/otherScreenLink"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
