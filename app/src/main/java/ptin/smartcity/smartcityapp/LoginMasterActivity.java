@@ -23,6 +23,8 @@ public abstract class LoginMasterActivity extends AppCompatActivity {
     protected EditText _emailField;
     protected EditText _passwordField;
 
+    private int _backCounter = 0;
+
     // Ejecutar el crear la pantalla
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,18 @@ public abstract class LoginMasterActivity extends AppCompatActivity {
 
     // Disable going back to the MainActivity
     @Override
-    public void onBackPressed() { }
+    public void onBackPressed() {
+        // EasterEgg
+        ++_backCounter;
+
+        if ( _backCounter == 2 ) {
+            _backCounter = 0;
+
+            // Open Configuration Menú
+            Intent settings = new Intent(this, ConfigActivity.class);
+            startActivity(settings);
+        }
+    }
 
     // Autenticació correcta
     public void onSuccess() {

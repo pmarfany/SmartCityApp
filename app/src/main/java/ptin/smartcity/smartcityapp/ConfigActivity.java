@@ -30,6 +30,8 @@ public class ConfigActivity extends AppCompatActivity {
     // Camps de dades del servidor
     private EditText ipAddressField;
     private EditText portField;
+    private EditText MQTTipAddressField;
+    private EditText MQTTportField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,9 @@ public class ConfigActivity extends AppCompatActivity {
         // Camps de dades del servidor
         ipAddressField = (EditText) findViewById(R.id.settings_ipAddress);
         portField = (EditText) findViewById(R.id.settings_port);
+
+        MQTTipAddressField = (EditText) findViewById(R.id.settings_MQTTipAddress);
+        MQTTportField = (EditText) findViewById(R.id.settings_MQTTport);
     }
 
     // Posem els valors anteriorment guardats en els seus camps corresponents
@@ -94,6 +99,9 @@ public class ConfigActivity extends AppCompatActivity {
         // Camps de dades del servidor
         ipAddressField.setText( DataStorage.getData("ipAddress") );
         portField.setText( DataStorage.getData("port") );
+
+        MQTTipAddressField.setText( DataStorage.getData("MQTTipAddress") );
+        MQTTportField.setText( DataStorage.getData("MQTTport") );
     }
 
     /**
@@ -158,8 +166,12 @@ public class ConfigActivity extends AppCompatActivity {
                     DataStorage.putString("Birthday", birthdayButton.getText().toString());
                     DataStorage.putString("PhoneNumber", phoneNumberField.getText().toString());
                     DataStorage.putString("Comments", commentsField.getText().toString());
+
                     DataStorage.putString("ipAddress", ipAddressField.getText().toString());
                     DataStorage.putString("port", portField.getText().toString());
+
+                    DataStorage.putString("MQTTipAddress", MQTTipAddressField.getText().toString());
+                    DataStorage.putString("MQTTport", MQTTportField.getText().toString());
 
                     // Tanquem l'activitat
                     this.finish();
@@ -188,6 +200,9 @@ public class ConfigActivity extends AppCompatActivity {
 
         valid = valid && dataChecker.checkField(ipAddressField, DataChecker.TYPE_IPADDRESS);
         valid = valid && dataChecker.checkField(portField, DataChecker.TYPE_TEXT);
+
+        valid = valid && dataChecker.checkField(MQTTipAddressField, DataChecker.TYPE_IPADDRESS);
+        valid = valid && dataChecker.checkField(MQTTportField, DataChecker.TYPE_TEXT);
 
         return valid;
     }

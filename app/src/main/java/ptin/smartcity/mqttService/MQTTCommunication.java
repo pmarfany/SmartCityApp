@@ -40,12 +40,12 @@ public class MQTTCommunication {
 
     public MQTTCommunication(Context act) throws IOException {
         // Obtenim la IP i el port del servidor
-        if ( !DataStorage.has("ipAddress") || !DataStorage.has("port") ) {
+        if ( !DataStorage.has("MQTTipAddress") || !DataStorage.has("MQTTport") ) {
             throw new IOException("There is no socket data available!");
         }
 
         // Generem la URI del servidor
-        this.SERVER_URI = "tcp://" + DataStorage.getData("ipAddress") + ":" + DataStorage.getData("port");
+        this.SERVER_URI = "tcp://" + DataStorage.getData("MQTTipAddress") + ":" + DataStorage.getData("MQTTport");
 
         // Create mqttClient
         mqttAndroidClient = new MqttAndroidClient(act, this.SERVER_URI, MqttClient.generateClientId());

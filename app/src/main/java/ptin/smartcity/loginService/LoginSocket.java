@@ -15,6 +15,8 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 
+import ptin.smartcity.storage.DataStorage;
+
 public class LoginSocket {
 
     private Socket socket;
@@ -28,13 +30,13 @@ public class LoginSocket {
     private static final String STATUS_SIGNUP = "SignUp";
 
     public LoginSocket() throws IOException {
-        /* Obtenim la IP i el port del servidor
+        // Obtenim la IP i el port del servidor
         if ( !DataStorage.has("ipAddress") || !DataStorage.has("port") ) {
             throw new IOException("There is no socket data available!");
         }
 
         this.SERVER_IP = DataStorage.getData("ipAddress");
-        this.SERVER_PORT = Integer.parseInt( DataStorage.getData("port") );*/
+        this.SERVER_PORT = Integer.parseInt( DataStorage.getData("port") );
 
         this.socket = new Socket();
         try {

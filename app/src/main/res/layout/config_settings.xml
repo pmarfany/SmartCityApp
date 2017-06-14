@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp" >
 
         <ImageView
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp" >
+        android:layout_marginBottom="16dp" >
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -65,6 +65,69 @@
 
                 android:inputType="number"
                 android:hint="@string/settings_port" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MQTTsettings"/>
+
+    <!-- MQTT - IP Address -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_internet"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp" >
+
+            <EditText
+                android:id="@+id/settings_MQTTipAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:inputType="numberDecimal"
+                android:digits="0123456789."
+                android:hint="@string/settings_MQTTipAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <!-- MQTT - Port Number -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" >
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/config_align" >
+
+            <EditText
+                android:id="@+id/settings_MQTTport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:inputType="number"
+                android:hint="@string/settings_MQTTport" />
 
         </android.support.design.widget.TextInputLayout>
 

@@ -15,9 +15,12 @@
     <string name="config_comments">Comments (optional)</string>
 
     <!-- Settings fields -->
-    <string name="settings">Settings</string>
+    <string name="settings">Server Settings</string>
     <string name="settings_ipAddress">IP Address</string>
     <string name="settings_port">Port Number</string>
+    <string name="MQTTsettings">MQTT Settings</string>
+    <string name="settings_MQTTipAddress">MQTT - IP Address</string>
+    <string name="settings_MQTTport">MQTT - Port Number</string>
 
     <!-- Login|SignUp Common Texts -->
     <string name="signUp_login_mail">Email</string>

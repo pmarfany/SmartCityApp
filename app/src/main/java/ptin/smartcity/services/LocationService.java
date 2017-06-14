@@ -65,8 +65,10 @@ public class LocationService implements LocationListener {
 
     // Mètode per inicialitzar les coordenades en funció de una localització "loc".
     private void initLocation(Location loc) {
-        this.LATITUDE = loc.getLatitude();
-        this.LONGITUDE = loc.getLongitude();
+        if (loc != null) {
+            this.LATITUDE = loc.getLatitude();
+            this.LONGITUDE = loc.getLongitude();
+        }
     }
 
     // Mètode d'actualització de la localització
