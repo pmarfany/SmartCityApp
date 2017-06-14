@@ -7,8 +7,6 @@ import android.os.AsyncTask;
 
 import java.io.IOException;
 
-import ptin.smartcity.services.MQTTCommunication;
-import ptin.smartcity.smartcityapp.LoginMasterActivity;
 import ptin.smartcity.smartcityapp.MainActivity;
 import ptin.smartcity.smartcityapp.R;
 
@@ -16,7 +14,7 @@ import ptin.smartcity.smartcityapp.R;
  * Created by PauMarfany on 14/6/17.
  */
 
-public class MQTTAsyncHandler extends AsyncTask<String, Boolean, Boolean> {
+public class MQTTAsyncHandler extends AsyncTask<Object, Boolean, Boolean> {
 
     private ProgressDialog progressDialog;
     private MainActivity activity;
@@ -50,12 +48,12 @@ public class MQTTAsyncHandler extends AsyncTask<String, Boolean, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(String... params) {
+    protected Boolean doInBackground(Object[] params) {
         // Comunicació amb el server
         MQTTCommunication mqttCommunication;
         try {
             // Comunicació MQTT
-            mqttCommunication = new MQTTCommunication(activity);
+            mqttCommunication = new MQTTCommunication(mContext);
 
             mqttCommunication.subscribeToTopic();
 

@@ -2,7 +2,6 @@ package ptin.smartcity.loginService;
 
 import java.io.IOException;
 
-import ptin.smartcity.smartcityapp.LoginActivity;
 import ptin.smartcity.smartcityapp.LoginMasterActivity;
 
 /**

@@ -1,15 +1,8 @@
 package ptin.smartcity.loginService;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.os.AsyncTask;
-
 import java.io.IOException;
 
-import ptin.smartcity.smartcityapp.LoginActivity;
 import ptin.smartcity.smartcityapp.LoginMasterActivity;
-import ptin.smartcity.smartcityapp.R;
 
 /**
  * Created by PauMarfany on 14/6/17.

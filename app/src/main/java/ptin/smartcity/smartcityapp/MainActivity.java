@@ -1,6 +1,5 @@
 package ptin.smartcity.smartcityapp;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.design.widget.NavigationView;
@@ -15,11 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-import java.io.IOException;
-
+import ptin.smartcity.mqttService.MQTTAsyncHandler;
 import ptin.smartcity.storage.DataStorage;
 import ptin.smartcity.services.LocationService;
-import ptin.smartcity.services.MQTTCommunication;
 
 
 public class MainActivity extends AppCompatActivity
@@ -124,47 +121,26 @@ public class MainActivity extends AppCompatActivity
         // Desactivem el botó
         _SOSButton.setEnabled(false);
 
-        // Iniciem la comunicació
-        final MQTTCommunication communication;
-        try {
-            communication = new MQTTCommunication(this);
-        } catch (IOException e) {
-            // Mostrem alerta d'error
-            sendErrorAlert(v);
+        // Creem una tasca en un altre procés per al login
+        MQTTAsyncHandler mqttAsyncHandler = new MQTTAsyncHandler(this);
+        mqttAsyncHandler.execute();
 
-            // Activem el botó
-            _SOSButton.setEnabled(true);
-            return;
-        }
+    }
 
-        final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this, R.style.LoginTheme_Dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Sending message");
-        progressDialog.show();
+    public void onSuccess() {
+        _SOSButton.setEnabled(true);
 
-        // Després de 3 segons, mostrem el missatge d'enviat!
-        new android.os.Handler().postDelayed(
-            new Runnable() {
-                public void run() {
-                // Tanquem el diàleg
-                progressDialog.dismiss();
+        // Iniciem la pantalla d'emergències
+        emergency.putExtra("EMERGENCY_OPTION", EMERGENCY_OPTION);
+        startActivity(emergency);
+    }
 
-                if ( communication.isMessageSended() ) {
-                    // Activem el botó
-                    _SOSButton.setEnabled(true);
+    public void onFailed() {
+        // Mostrem alerta d'error
+        sendErrorAlert(findViewById(R.id.drawer_layout));
 
-                    // Iniciem la pantalla d'emergències
-                    emergency.putExtra("EMERGENCY_OPTION", EMERGENCY_OPTION);
-                    startActivity(emergency);
-                }
-                else {
-                    // Mostrem alerta d'error
-                    sendErrorAlert(v);
-
-                    // Activem el botó
-                    _SOSButton.setEnabled(true);
-                }
-            }}, 3000);
+        // Activem el botó
+        _SOSButton.setEnabled(true);
     }
 
     private void sendErrorAlert(View v) {

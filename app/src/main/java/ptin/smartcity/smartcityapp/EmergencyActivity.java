@@ -9,20 +9,20 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 public class EmergencyActivity extends AppCompatActivity {
 
-    @Bind(R.id.loading_dots) ImageView img;
-    @Bind(R.id.ambulance) ImageView ambulance;
-    @Bind(R.id.emergency_text) TextView emergency_text;
+    private ImageView img;
+    private ImageView ambulance;
+    private TextView emergency_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
-        ButterKnife.bind(this);
+
+        img = (ImageView) findViewById(R.id.loading_dots);
+        ambulance = (ImageView) findViewById(R.id.ambulance);
+        emergency_text = (TextView) findViewById(R.id.emergency_text);
 
         // Set text
         setEmergencyText();

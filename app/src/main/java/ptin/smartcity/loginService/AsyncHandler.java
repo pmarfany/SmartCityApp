@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 
-import ptin.smartcity.smartcityapp.LoginActivity;
 import ptin.smartcity.smartcityapp.LoginMasterActivity;
 import ptin.smartcity.smartcityapp.R;
 

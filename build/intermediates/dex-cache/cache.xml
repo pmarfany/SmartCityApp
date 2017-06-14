@@ -200,15 +200,6 @@
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/release/support-annotations-25.3.1_69f16a5ad3e35264ca426d23365297fac40ce77d.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/PauMarfany/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-7.0.1_97771bf9d31147934db54d1e82e7db3764eb8861/classes.dex" />
-    </item>
-    <item
         is-multidex="false"
         jar="/Users/PauMarfany/.android/build-cache/8752778169615bb961f7ef1e1dfa1fa5faabdfa0/output/jars/classes.jar"
         jumboMode="false"
@@ -270,15 +261,6 @@
         revision="25.0.2"
         sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
         <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/pre-dexed/release/classes_bc89f6404c1ec6c94415578b3db79264303527c6.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/PauMarfany/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="/Users/PauMarfany/AndroidStudioProjects/SmartCityApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-7.0.1_97771bf9d31147934db54d1e82e7db3764eb8861/classes.dex" />
     </item>
     <item
         is-multidex="true"
