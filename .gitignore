@@ -10,3 +10,9 @@ Thumbs.db
 
 ##### Idea folder #####
 .idea/
+
+#### Mine ####
+.gradle
+Dades
+build
+local.properties
